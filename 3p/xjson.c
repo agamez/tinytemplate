@@ -531,14 +531,14 @@ _Bool xj_array_append(xj_value *array, xj_value *child,
 
         // Find the end of the array
         xj_value **tail;
+        xj_value *curs = array->as_array;
 
-        if(array->as_array == NULL)
+        if(curs == NULL)
             // The tail is the base node pointer
             tail = &array->as_array;
         else
         {
             // Scan the list 'til the end
-            xj_value *curs = array->as_array;
             while(curs->next != NULL)
                 curs = curs->next;
             tail = &curs;
