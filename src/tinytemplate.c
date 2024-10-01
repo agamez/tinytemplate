@@ -1,3 +1,4 @@
+#include <inttypes.h>
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
@@ -1287,7 +1288,7 @@ tinytemplate_eval(const char *src, const instr_t *program,
                     case TINYTEMPLATE_TYPE_INT:
                     {
                         char text[128];
-                        int num = snprintf(text, sizeof(text), "%lld", stack[stack_depth-1].as_int);
+                        int num = snprintf(text, sizeof(text), "%"PRId64, stack[stack_depth-1].as_int);
                         assert(num > 0);
                         callback(userp, text, (size_t) num);
                         break;
